@@ -21,7 +21,7 @@ class CustomInstallCommand(install):
         
         with open(htem_file, 'w', encoding='utf-8') as file:
             file.write(content)
-        install.run(self)
+        super().run()
 
 setup(
     name='HTEM',
@@ -29,10 +29,10 @@ setup(
     install_requires=['numpy', 'scipy', 'ase', 'spglib', 'matplotlib', 'imageio'],
     author="Zhen Yang",
     author_email="627259879@qq.com",
-    scripts=['HTEM','job_sbatch_relax1.sh','job_sbatch_NPT.sh','job_sbatch_strain.sh','HTEM_slurm_sub.sh'],
     zip_safe=False,
-    license="LICENSE",
+    license="LICENSE.txt",
     cmdclass={
         'install': CustomInstallCommand,
     },
+    scripts=['HTEM','job_sbatch.sh','HTEM_slurm_sub.sh'],
 )
