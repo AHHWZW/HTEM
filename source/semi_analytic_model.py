@@ -696,7 +696,7 @@ class SAM:
                 format_str = '{}: b0 is {:<10.8f} (ang$^3/atom)     b1 is {:<10.8f} (ang^3/atom/GPa)     RMSE is {:<8.6} (ang^3/atom)\n'
             else:
                 format_str = '{}: b0 is {:<8.6f} (GPa)     b1 is {:<8.6f}     RMSE is {:<8.6f} (GPa)\n'
-            fo1.write(format_str.format(i, b0_dict[i], b1_dict[i], error_dict[i]))
+            fo1.write(format_str.format(i, b1_dict[i], b0_dict[i], error_dict[i]))
 
         fo1.write('The modeled elastic constants and moduli are as follows:\n')
         head = ['T(K)', 'P(GPa)', 'V(ang^3/atom)'] + Cij_list + ['B', 'G', 'E']
@@ -731,4 +731,5 @@ class SAM:
                 line.cal_properties(args)
                 write_cal.Cinf(args.lattice, fn2, line)
         
+
         sys.stdout.write('Elasticity calculated based on modeled C matrix is saved as '+fn2+'\n')
